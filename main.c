@@ -3,13 +3,9 @@
 int main(){
 	int fd = open("test", O_RDONLY);
 	char *line;
-	while((line = get_next_line(fd)))
+	while((line = get_next_line(fd)) != NULL)
 	{
-		
-	 }
-	line = get_next_line(fd);
-	printf("%s", line);
-	free(line);
-		
+		printf("%s", line);
+	}
 	close(fd);
 }
