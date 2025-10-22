@@ -19,7 +19,7 @@ static char *refill_backup_data(char *backup_data)
 
 	if(!backup_data)
 		return (NULL);
-	len_backup_data = ft_strlen(backup_data); 
+	len_backup_data = ft_strlen(backup_data);
 	j = 0;
 	while (backup_data[j] && backup_data[j] != '\n')
 		j++;
@@ -39,6 +39,7 @@ static char	*get_line(char *backup_data)
 	size_t first;
 	size_t len_backup_data;
 
+	len_backup_data = 0;
 	if(!backup_data)
 		return (NULL);
 	len_backup_data = ft_strlen(backup_data);
@@ -55,7 +56,7 @@ static char    *read_file(int fd, char *backup_data)
 	ssize_t numchar;
 	char	*chunck;
 
-	chunck = malloc (BUFFER_SIZE + 1);
+	chunck = (char *)malloc (BUFFER_SIZE + 1);
 	if(!chunck)
 		return (NULL);
 	numchar = 1;

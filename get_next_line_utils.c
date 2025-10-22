@@ -22,7 +22,7 @@ char	*ft_strdup(const char *s)
     if(!s)
         return (NULL);
     len = ft_strlen(s);
-    str = malloc (len + 1);
+    str = (char *) malloc (len + 1);
     if(!str)
         return (NULL);
     while(s[i])
@@ -47,10 +47,10 @@ char	*ft_strjoin(char *s1, char *s2)
     if (!s2)
         return (NULL);
     if (!s1)
-        return (ft_strdup(""));
+        s1 = ft_strdup("");
 	lens1 = ft_strlen(s1);
 	lens2 = ft_strlen(s2);
-	ptr = malloc(lens1 + lens2 + 1);
+	ptr = (char *)malloc(lens1 + lens2 + 1);
 	if (!ptr)
 		return (NULL);
 	i = -1;
@@ -91,7 +91,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	l = ft_strlen(s);
 	if (start >= l)
 	{
-		ptr = malloc(1);
+		ptr = (char *)malloc(1);
 		if (!ptr)
 			return (NULL);
 		ptr[0] = '\0';
@@ -100,7 +100,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub_len = l - (size_t)start;
 	if (sub_len > len)
 		sub_len = len;
-	ptr = malloc(sub_len + 1);
+	ptr = (char *)malloc(sub_len + 1);
 	if (!ptr)
 		return (NULL);
 	i = -1;
