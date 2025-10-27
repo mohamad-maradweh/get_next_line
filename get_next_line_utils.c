@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malmarad <malmarad@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 19:20:43 by malmarad          #+#    #+#             */
+/*   Updated: 2025/10/27 20:43:43 by malmarad         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(char const *s)
 {
 	size_t	j;
 
+	if (!s)
+		return (0);
 	j = 0;
 	while (s[j])
 	{
@@ -57,8 +71,8 @@ char	*ft_strjoin(char *s1, char *s2)
 		ptr[i] = s1[i];
 	j = 0;
 	while (s2[j])
-		ptr[i++] = s2[j++];
-	ptr[i] = '\0';
+		ptr[++i] = s2[j++];
+	ptr[++i] = '\0';
 	return (ptr);
 }
 
