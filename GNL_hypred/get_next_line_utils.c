@@ -6,7 +6,7 @@
 /*   By: malmarad <malmarad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 19:20:43 by malmarad          #+#    #+#             */
-/*   Updated: 2025/10/29 19:51:20 by malmarad         ###   ########.fr       */
+/*   Updated: 2025/10/29 20:45:34 by malmarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(char const *s)
 	size_t	j;
 
 	if (!s)
-		return (0);
+		return (-1);
 	j = 0;
 	while (s[j])
 	{
@@ -61,7 +61,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		s1 = ft_strdup("");
 	if(!s1)
 		return (NULL);
-	ptr = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	ptr = (char *)malloc( ft_strlen(s1)+ ft_strlen(s2) + 1);
 	if (!ptr)
 		return (NULL);
 	i = -1;
@@ -69,9 +69,9 @@ char	*ft_strjoin(char *s1, char *s2)
 		ptr[i] = s1[i];
 	j = 0;
 	while (s2[j])
-		ptr[++i] = s2[j++];
-	ptr[++i] = '\0';
-	
+		ptr[i++] = s2[j++];
+	ptr[i] = '\0';
+	free(s1);
 	return (ptr);
 }
 
@@ -93,7 +93,7 @@ char	*ft_strchr(const char *s, int c)
 	return (NULL);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	unsigned int	i;
 	char			*ptr;
@@ -101,20 +101,27 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			sub_len;
 
 	l = ft_strlen(s);
-	if (start >= l)
-	{
-		ptr = (char *)malloc(1);
-		if (!ptr)
-			return (NULL);
-		ptr[0] = '\0';
-		return (ptr);
-	}
+	// if (start >= l)
+	// {
+	// 	ptr = (char *)malloc(1);
+	// 	if (!ptr)
+	// 	{
+	// 		free(s);
+	// 		free(ptr);
+	// 		return (NULL);
+	// 	}
+	// 	ptr[0] = '\0';
+	// 	return (ptr);
+	// }
 	sub_len = l - (size_t)start;
 	if (sub_len > len)
 		sub_len = len;
 	ptr = (char *)malloc(sub_len + 1);
 	if (!ptr)
+	{
+		free(s);
 		return (NULL);
+	}
 	i = -1;
 	while (s[++i + start] && i < len)
 		ptr[i] = s[i + start];
