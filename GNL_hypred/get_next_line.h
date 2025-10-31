@@ -6,7 +6,7 @@
 /*   By: malmarad <malmarad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 19:24:12 by malmarad          #+#    #+#             */
-/*   Updated: 2025/10/29 14:36:33 by malmarad         ###   ########.fr       */
+/*   Updated: 2025/10/31 14:43:26 by malmarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 42
 # endif
 
 # include <fcntl.h>

@@ -6,7 +6,7 @@
 /*   By: malmarad <malmarad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 19:20:43 by malmarad          #+#    #+#             */
-/*   Updated: 2025/10/29 20:45:34 by malmarad         ###   ########.fr       */
+/*   Updated: 2025/10/31 17:07:50 by malmarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,18 @@ char	*ft_strjoin(char *s1, char *s2)
 	int		j;
 	char	*ptr;
 
-	i = 0;
 	if (!s2)
 		return (NULL);
 	if (!s1)
 		s1 = ft_strdup("");
-	if(!s1)
+	if (!s1)
 		return (NULL);
-	ptr = (char *)malloc( ft_strlen(s1)+ ft_strlen(s2) + 1);
+	ptr = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!ptr)
+	{
+		free(s1);
 		return (NULL);
+	}
 	i = -1;
 	while (s1[++i])
 		ptr[i] = s1[i];
@@ -88,8 +90,6 @@ char	*ft_strchr(const char *s, int c)
 			return ((char *)s + i);
 		i++;
 	}
-	if (s[i] == '\0')
-		return ((char *)s + i);
 	return (NULL);
 }
 
@@ -101,25 +101,12 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	size_t			sub_len;
 
 	l = ft_strlen(s);
-	// if (start >= l)
-	// {
-	// 	ptr = (char *)malloc(1);
-	// 	if (!ptr)
-	// 	{
-	// 		free(s);
-	// 		free(ptr);
-	// 		return (NULL);
-	// 	}
-	// 	ptr[0] = '\0';
-	// 	return (ptr);
-	// }
 	sub_len = l - (size_t)start;
 	if (sub_len > len)
 		sub_len = len;
 	ptr = (char *)malloc(sub_len + 1);
 	if (!ptr)
 	{
-		free(s);
 		return (NULL);
 	}
 	i = -1;

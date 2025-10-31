@@ -6,7 +6,7 @@
 /*   By: malmarad <malmarad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 19:21:06 by malmarad          #+#    #+#             */
-/*   Updated: 2025/10/29 20:40:07 by malmarad         ###   ########.fr       */
+/*   Updated: 2025/10/31 14:52:50 by malmarad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,15 @@
 
 int	main(void)
 {
-	int	fd = open("test.txt", O_RDONLY);
+	int		fd;
 	char	*line;
+	int		i;
+
+	fd = open("test.txt", O_RDONLY);
+	i = 0;
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		printf("%s", line);
+		printf("%d)line : %s\n", i++, line);
 		free(line);
 	}
 	close(fd);

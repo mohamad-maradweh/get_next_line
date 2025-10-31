@@ -1,4 +1,4 @@
- /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -63,8 +63,8 @@ static char	*read_file(int fd, char *backup_data, ssize_t *numchar)
 			free(chunck);
 			return (NULL);
 		}
-		 if(*numchar == 0)
-			break;
+		if (*numchar == 0)
+			break ;
 		chunck[*numchar] = '\0';
 		backup_data = ft_strjoin(backup_data, chunck);
 		if (!backup_data)
@@ -84,16 +84,14 @@ char	*get_next_line(int fd)
 	ssize_t		n;
 
 	n = 1;
-	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (NULL); // free backup data before return
+	if (fd < 0 && BUFFER_SIZE <= 0)
+		return (NULL);
 	backup_data = read_file(fd, backup_data, &n);
 	if (!backup_data)
 		return (NULL);
 	line = get_line(backup_data);
-	if (!line || line[0] == '\0')
+	if (!line)
 	{
-		if (line[0] == '\0')
-			free(line);
 		if (backup_data)
 			free(backup_data);
 		backup_data = NULL;
